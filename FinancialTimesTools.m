@@ -1,3 +1,9 @@
+BeginPackage["FinancialTimesTools`"]
+
+FTReportWindow::usage="";
+
+Begin["Private`"];
+
 ftReports = {"BondsAndRates" -> {{"UK Gilts - Cash Market",
       "UKG"}, {"Official Interest Rates",
       "OINT"}, {"International Money Market Rates",
@@ -100,3 +106,6 @@ FTReportWindow[] :=
      Frame -> All]],WindowTitle -> "Financial Times", Savable -> False, Magnification -> 1.2, WindowSize -> All];
      Null
      ]
+
+End[];
+EndPackage[];
