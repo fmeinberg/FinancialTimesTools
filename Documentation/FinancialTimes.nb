@@ -1,0 +1,459 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     20740,        450]
+NotebookOptionsPosition[     19774,        414]
+NotebookOutlinePosition[     20112,        429]
+CellTagsIndexPosition[     20069,        426]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FTUrl", "[", 
+   RowBox[{"\"\<MarketsOverview\>\"", ",", "country_"}], "]"}], ":=", 
+  RowBox[{"StringJoin", "[", 
+   RowBox[{
+   "\"\<http://markets.ft.com/ft/markets/countryOverview.asp?country=\>\"", 
+    ",", 
+    RowBox[{"CountryData", "[", 
+     RowBox[{"country", ",", "\"\<CountryCode\>\""}], "]"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.49918453829181*^9, 3.499184578666337*^9}, {
+  3.4991846354708443`*^9, 3.499184638919746*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FTUrl", "[", "\"\<CompanyResearch\>\"", "]"}], ":=", 
+  "\"\<http://markets.ft.com/ft/markets/companyResearch.asp\>\""}]], "Input",
+ CellChangeTimes->{{3.499184868759802*^9, 3.499184912685382*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FTUrl", "[", "\"\<Sectors\>\"", "]"}], ":=", 
+  "\"\<http://markets.ft.com/ft/markets/sectorsAndIndustries.asp\>\""}]], \
+"Input",
+ CellChangeTimes->{{3.499184868759802*^9, 3.499184912685382*^9}, {
+  3.499184999656698*^9, 3.499185008554181*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FTUrl", "[", "\"\<Currencies\>\"", "]"}], ":=", 
+  "\"\<http://markets.ft.com/ft/markets/currencies.asp\>\""}]], "Input",
+ CellChangeTimes->{{3.499184868759802*^9, 3.499184912685382*^9}, {
+  3.499184999656698*^9, 3.499185008554181*^9}, {3.4991850559892883`*^9, 
+  3.499185061293168*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FTHyperlink", "[", 
+   RowBox[{"type_", ",", "args___"}], "]"}], ":=", 
+  RowBox[{"Hyperlink", "[", 
+   RowBox[{
+    RowBox[{"Quiet", "@", 
+     RowBox[{"Check", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#1", "&"}], "[", "args", "]"}], ",", "type"}], "]"}]}], ",", 
+    
+    RowBox[{"FTUrl", "[", 
+     RowBox[{"type", ",", "args"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.499184652591297*^9, 3.499184710626244*^9}, {
+  3.499184884800365*^9, 3.499184892663321*^9}, {3.499184930776122*^9, 
+  3.4991849317347097`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FTHyperlink", "[", "\"\<CompanyResearch\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.4991847128869667`*^9, 3.499184721524914*^9}, {
+  3.499184916774371*^9, 3.499184920269787*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  ButtonBox[
+   PaneSelectorBox[{False->"\<\"CompanyResearch\"\>", True->
+    StyleBox["\<\"CompanyResearch\"\>", "HyperlinkActive"]}, Dynamic[
+     CurrentValue["MouseOver"]],
+    BaseStyle->{"Hyperlink"},
+    BaselinePosition->Baseline,
+    FrameMargins->0,
+    ImageSize->Automatic],
+   BaseStyle->"Hyperlink",
+   ButtonData->{
+     URL["http://markets.ft.com/ft/markets/companyResearch.asp"], None},
+   ButtonNote->"http://markets.ft.com/ft/markets/companyResearch.asp"],
+  Annotation[#, "http://markets.ft.com/ft/markets/companyResearch.asp", 
+   "Hyperlink"]& ]], "Output",
+ CellChangeTimes->{
+  3.499184722618998*^9, {3.499184920841546*^9, 3.4991849356697206`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"CountryData", "[", "\"\<Properties\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.499184580918207*^9, 3.4991845866422157`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Sector overviews", "Section",
+ CellChangeTimes->{{3.499187800771605*^9, 3.499187803090837*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["FT Market Data pages", "Subsection",
+ CellChangeTimes->{{3.499185282503469*^9, 3.499185285782267*^9}}],
+
+Cell[BoxData["\"\<http://markets.ft.com/markets/overview.asp\n\
+http://markets.ft.com/ft/markets/companyResearch.asp\n\
+http://markets.ft.com/ft/markets/worldEquities.asp\n\
+http://markets.ft.com/markets/sectorsAndIndustries.asp\n\
+http://markets.ft.com/ft/markets/currencies.asp\n\
+http://markets.ft.com/markets/commodities.asp\n\
+http://markets.ft.com/markets/bonds.asp\n\
+http://funds.ft.com/funds/Homepage.aspx\n\
+http://markets.ft.com/markets/directorDealings.asp\n\
+http://markets.ft.com/ft/markets/researchArchive.asp\n\
+http://markets.ft.com/alertsHub/company-news-and-price.asp\n\
+http://markets.ft.com/portfolio/all.asp\n\
+http://markets.ft.com/markets/interactiveChart.asp\n\
+http://markets.ft.com/screener/customScreen.asp\n\
+http://markets.ft.com/markets/investorRelations.asp\>\""], "Input",
+ CellChangeTimes->{{3.499185286834056*^9, 3.499185288937378*^9}, {
+  3.499185398686639*^9, 3.4991853990755377`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["FT Market Sector pages", "Subsection",
+ CellChangeTimes->{{3.4991876918671093`*^9, 3.499187709855938*^9}}],
+
+Cell["Main groups (for sorting)", "Text",
+ CellChangeTimes->{{3.49918771861595*^9, 3.499187722127955*^9}}],
+
+Cell[BoxData["\"\<http://markets.ft.com/markets/sectorsAndIndustries/sectors.\
+asp?s=591324&encodedName=Basic-Materials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=600576&\
+encodedName=Consumer-Goods\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=569761&\
+encodedName=Consumer-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=588495&\
+encodedName=Financials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=579615&\
+encodedName=Health-Care\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=581751&\
+encodedName=Industrials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=574742&\
+encodedName=Oil-and-Gas\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=598920&\
+encodedName=Technology\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=600280&\
+encodedName=Telecommunications\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=594751&\
+encodedName=Utilities\>\""], "Input",
+ CellChangeTimes->{{3.499187764556028*^9, 3.4991877723614902`*^9}}],
+
+Cell["All sectors", "Text",
+ CellChangeTimes->{{3.499187714344802*^9, 3.499187716414538*^9}}],
+
+Cell[BoxData["\"\<http://markets.ft.com/markets/sectorsAndIndustries/sectors.\
+asp?s=591324&encodedName=Basic-Materials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=567412&\
+encodedName=Coal\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=583067&\
+encodedName=Steel\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=588676&\
+encodedName=Nonferrous-Metals\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=569668&\
+encodedName=Platinum-and-Precious-Metals\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=568269&\
+encodedName=Commodity-Chemicals\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=575471&\
+encodedName=Specialty-Chemicals\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=587898&\
+encodedName=Aluminum\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=599952&\
+encodedName=Gold-Mining\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=591256&\
+encodedName=Paper\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=22197564&\
+encodedName=General-Mining\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=600576&\
+encodedName=Consumer-Goods\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=598895&\
+encodedName=Footwear\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=575635&\
+encodedName=Tires\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=572961&\
+encodedName=Furnishings\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=568888&\
+encodedName=Automobiles\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=595203&\
+encodedName=Clothing-and-Accessories\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=600559&\
+encodedName=Consumer-Electronics\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=570498&\
+encodedName=Recreational-Products\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=592044&\
+encodedName=Soft-Drinks\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=579123&\
+encodedName=Distillers-and-Vintners\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=584845&\
+encodedName=Toys\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=603373&\
+encodedName=Tobacco\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=579079&\
+encodedName=Durable-Household-Products\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=566567&\
+encodedName=Personal-Products\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=577542&\
+encodedName=Food-Products\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=572739&\
+encodedName=Nondurable-Household-Products\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=569527&\
+encodedName=Auto-Parts\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=3847110&\
+encodedName=Farming-and-Fishing\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=584932&\
+encodedName=Home-Construction\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=569761&\
+encodedName=Consumer-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=574332&\
+encodedName=Gambling\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=595311&\
+encodedName=Home-Improvement-Retailers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=594079&\
+encodedName=Apparel-Retailers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=597454&\
+encodedName=Specialty-Retailers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=586539&\
+encodedName=Restaurants-and-Bars\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=589118&\
+encodedName=Broadline-Retailers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=580367&\
+encodedName=Airlines\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=599105&\
+encodedName=Hotels\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=601811&\
+encodedName=Media-Agencies\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=583066&\
+encodedName=Drug-Retailers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=572612&\
+encodedName=Publishing\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=603961&\
+encodedName=Recreational-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=571998&\
+encodedName=Travel-and-Tourism\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=597943&\
+encodedName=Broadcasting-and-Entertainment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=589962&\
+encodedName=Food-Retailers-and-Wholesalers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=597944&\
+encodedName=Specialized-Consumer-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=588495&\
+encodedName=Financials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968080&\
+encodedName=Hotel-and-Lodging-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968076&\
+encodedName=Residential-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=585892&\
+encodedName=Consumer-Finance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=599617&\
+encodedName=Real-Estate-Investment-Trusts\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968075&\
+encodedName=Retail-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968078&\
+encodedName=Specialty-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=602828&\
+encodedName=Investment-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968077&\
+encodedName=Diversified-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=594522&\
+encodedName=Insurance-Brokers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=600416&\
+encodedName=Specialty-Finance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=577350&\
+encodedName=Full-Line-Insurance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968079&\
+encodedName=Mortgage-REITs\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=573664&\
+encodedName=Reinsurance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=574869&\
+encodedName=Mortgage-Finance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=591240&\
+encodedName=Property-and-Casualty-Insurance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=591240&\
+encodedName=Property-and-Casualty-Insurance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=571681&\
+encodedName=Asset-Managers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=592430&\
+encodedName=Life-Insurance\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=602526&\
+encodedName=Banks\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=565999&\
+encodedName=Real-Estate-Holding-and-Development\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968073&\
+encodedName=Real-Estate-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=579615&\
+encodedName=Health-Care\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=566624&\
+encodedName=Health-Care-Providers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=601890&\
+encodedName=Biotechnology\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=577492&\
+encodedName=Medical-Supplies\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=582504&\
+encodedName=Medical-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=582887&\
+encodedName=Pharmaceuticals\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=581751&\
+encodedName=Industrials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=566237&\
+encodedName=Trucking\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=594521&\
+encodedName=Commercial-Vehicles-and-Trucks\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=576635&\
+encodedName=Marine-Transportation\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=572364&\
+encodedName=Delivery-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=601719&\
+encodedName=Financial-Administration\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=581719&\
+encodedName=Industrial-Suppliers\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=584652&\
+encodedName=Industrial-Machinery\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=587790&\
+encodedName=Diversified-Industrials\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=581720&\
+encodedName=Electrical-Components-and-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=581720&\
+encodedName=Electrical-Components-and-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=602827&\
+encodedName=Railroads\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=599830&\
+encodedName=Electronic-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=568377&\
+encodedName=Waste-and-Disposal-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=570885&\
+encodedName=Containers-and-Packaging\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=592453&\
+encodedName=Building-Materials-and-Fixtures\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=571326&\
+encodedName=Transportation-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=577349&\
+encodedName=Heavy-Construction\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=567900&\
+encodedName=Business-Support-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=586763&\
+encodedName=Business-Training-and-Employment-Agencies\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=603710&\
+encodedName=Defense\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=574940&\
+encodedName=Aerospace\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=574742&\
+encodedName=Oil-and-Gas\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11988002&\
+encodedName=Renewable-Energy-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=586079&\
+encodedName=Oil-Equipment-and-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=600577&\
+encodedName=Exploration-and-Production\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=569325&\
+encodedName=Pipelines\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=569634&\
+encodedName=Integrated-Oil-and-Gas\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11987997&\
+encodedName=Alternative-Fuels\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=598920&\
+encodedName=Technology\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=597455&\
+encodedName=Semiconductors\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=602459&\
+encodedName=Electronic-Office-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=592454&\
+encodedName=Telecommunications-Equipment\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=570142&\
+encodedName=Computer-Services\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=597929&\
+encodedName=Computer-Hardware\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=571422&\
+encodedName=Software\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=570495&\
+encodedName=Internet\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=600280&\
+encodedName=Telecommunications\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=596117&\
+encodedName=Mobile-Telecommunications\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=595568&\
+encodedName=Fixed-Line-Telecommunications\n\
+http://markets.ft.com/markets/sectorsAndIndustries/sectors.asp?s=594751&\
+encodedName=Utilities\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=578219&\
+encodedName=Water\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11988000&\
+encodedName=Alternative-Electricity\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=584653&\
+encodedName=Gas-Distribution\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=571107&\
+encodedName=Multi-utilities\n\
+http://markets.ft.com/markets/sectorsAndIndustries/industries.asp?s=11968071&\
+encodedName=Conventional-Electricity\>\""], "Input",
+ CellChangeTimes->{{3.4991876978523083`*^9, 3.4991877001849833`*^9}, {
+  3.49918777703687*^9, 3.499187778936804*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{640, 652},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 483, 12, 73, "Input"],
+Cell[1031, 34, 232, 4, 43, "Input"],
+Cell[1266, 40, 280, 6, 43, "Input"],
+Cell[1549, 48, 322, 6, 27, "Input"],
+Cell[1874, 56, 574, 16, 43, "Input"],
+Cell[CellGroupData[{
+Cell[2473, 76, 203, 3, 27, "Input"],
+Cell[2679, 81, 695, 17, 27, "Output"]
+}, Open  ]],
+Cell[3389, 101, 149, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[3563, 107, 101, 1, 67, "Section"],
+Cell[CellGroupData[{
+Cell[3689, 112, 108, 1, 34, "Subsection"],
+Cell[3800, 115, 922, 16, 238, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4759, 136, 112, 1, 34, "Subsection"],
+Cell[4874, 139, 106, 1, 26, "Text"],
+Cell[4983, 142, 1124, 20, 313, "Input"],
+Cell[6110, 164, 93, 1, 26, "Text"],
+Cell[6206, 167, 13540, 243, 3643, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
